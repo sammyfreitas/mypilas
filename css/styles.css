@@ -1,0 +1,6 @@
+/*  IMPORTAÇÃO DE ARQUIVOS CSS PARA NOSSA PÁGINA CARREGAR MAIS RÁPIDO  */
+
+@import url("bootstrap-grid.min.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("componentes.css");
