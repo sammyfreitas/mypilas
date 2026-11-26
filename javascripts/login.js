@@ -1,13 +1,22 @@
-function entrar() {
-    let usuarioCorreto = "_variable_usuario";
-    let senhaCorreta = "1234";
+async function entrar() {
 
     let usuario = document.getElementById("usuario").value;
     let senha = document.getElementById("senha").value;
 
-    if (usuario === usuarioCorreto && senha === senhaCorreta){
-        alert("Login realizado com sucesso!")
-        window.location.href = "painel.html"
+    let resposta = await fetch("/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            usuario: usuario,
+            senha: senha
+        })
+    });
+
+    if (resposta.ok) {
+        alert("Login realizado com sucesso!");
+        window.location.href = "painel.html";
     }
     else {
         document.getElementById("mensagem").textContent = "Usuário ou senha incorretos!";
@@ -15,7 +24,7 @@ function entrar() {
 
 }
 
-function sair(){
-    alert("Beijinho, beijinho, tchau, tchau")
-    window.location.href = "login.html"
+function sair() {
+    alert("Beijinho, beijinho, tchau, tchau");
+    window.location.href = "login.html";
 }
